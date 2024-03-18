@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.app = void 0;
+const express = require("express");
+const usersRouter_1 = require("./Routes/usersRouter");
+const coursesRouter_1 = require("./Routes/coursesRouter");
+const gradesRouter_1 = require("./Routes/gradesRouter");
+const globalErrorController_1 = require("./Controllers/globalErrorController");
+require('express-async-errors');
+exports.app = express();
+exports.app.use(express.json());
+exports.app.use('/users', usersRouter_1.userRouter);
+exports.app.use('/courses', coursesRouter_1.courseRouter);
+exports.app.use('/grades', gradesRouter_1.gradesRouter);
+exports.app.use(globalErrorController_1.GlobalErrorHandler);
